@@ -7,6 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<%@include file="../common/head.jsp" %>
 <script type="text/javascript">
 	function del(id){
 		var isDel = confirm("您确认要删除么");
@@ -17,7 +18,6 @@
 </script>
 </head>
 <body>
-	<%@include file="../common/head.jsp" %>
 	<!-- 顶部导航条 begin -->
 	<nav class="navbar navbar-default">
 	  <div class="container">
@@ -56,7 +56,7 @@
 				<div class="list-group">
 				  <a href="/ShiXun09/student?method=findAll" class="list-group-item active">商品管理</a>
 				  <a href="student_search.jsp" class="list-group-item">商品搜索</a>
-				  <a href="${ctx}/student/getAddPage.action" class="list-group-item">添加商品</a>
+				  <a href="${ctx}/product/getAddPage.action" class="list-group-item">添加商品</a>
 				</div>
 			</div>
 			<!--左边列表占12份中的10份-->

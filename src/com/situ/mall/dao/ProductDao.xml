@@ -27,4 +27,11 @@
   	<select id="findAll" resultMap="productMap">
   		select * from product
   	</select>
+  	
+  	<insert id="add" parameterType="Product" >
+	    insert into product (id,category_id,name,subtitle,
+	    main_image,sub_images,detail, price,stock,status,create_time,update_time) 
+	    values (#{id},#{categoryId},#{name},#{subtitle},#{mainImage},#{subImages},#{detail},#{price},#{stock},#{status},now(),now())
+    </insert>
+  	
   </mapper>
