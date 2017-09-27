@@ -4,8 +4,9 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 public class Product {
+	//商品id
     private Integer id;
-
+    //分类id,对应category表的主键
     private Integer categoryId;
 
     private String name;
@@ -94,7 +95,7 @@ public class Product {
     }
 
     public void setSubtitle(String subtitle) {
-        this.subtitle = subtitle == null ? null : subtitle.trim();
+        this.subtitle = (subtitle == null ? null : subtitle.trim());
     }
 
     public String getMainImage() {

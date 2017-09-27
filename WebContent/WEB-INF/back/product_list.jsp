@@ -74,7 +74,7 @@
 							<th>分类id</th>
 							<th>名称</th>
 							<!-- <th>商品副标题</th> -->
-							<!-- <th>产品主图</th> -->
+							<th>产品主图</th>
 							<!-- <th>图片地址</th> -->
 							<!-- <th>商品详情</th> -->
 							<th>价格</th>
@@ -93,7 +93,7 @@
 								<td>${product.categoryId}</td>
 								<td>${product.name}</td>
 								<%-- <td>${product.subtitle}</td> --%>
-								<%-- <td>${product.mainImage}</td> --%>
+								<td><img alt="" src="/pic/${product.mainImage}" width="80" height="60" "></td>
 								<%-- <td>${product.subImages}</td> --%>
 								<%-- <td>${product.detail}</td> --%>
 								<td>${product.price}</td>
