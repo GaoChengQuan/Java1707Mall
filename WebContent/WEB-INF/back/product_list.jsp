@@ -35,7 +35,7 @@
 	    <!-- Collect the nav links, forms, and other content for toggling -->
 	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 	      <ul class="nav navbar-nav">
-	        <li class="active"><a href="#"><span class="glyphicon glyphicon-home"></span>&nbsp;&nbsp;学生管理 </a></li>
+	        <li class="active"><a href="#"><span class="glyphicon glyphicon-home"></span>&nbsp;&nbsp;商品管理 </a></li>
 	        <li><a href="#"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;班级管理</a></li>
 	        <li><a href="#"><span class="glyphicon glyphicon-list-alt"></span>&nbsp;&nbsp;课程管理</a></li>
 	        <li><a href="#"><span class="glyphicon glyphicon-tag"></span>&nbsp;&nbsp;教务管理</a></li>
@@ -54,46 +54,60 @@
 			<!--左边列表占12份中的2份-->
 			<div class="col-md-2">
 				<div class="list-group">
-				  <a href="/ShiXun09/student?method=findAll" class="list-group-item active">学生管理</a>
-				  <a href="student_search.jsp" class="list-group-item">学生搜索</a>
-				  <a href="${ctx}/student/getAddPage.action" class="list-group-item">添加学生</a>
+				  <a href="/ShiXun09/student?method=findAll" class="list-group-item active">商品管理</a>
+				  <a href="student_search.jsp" class="list-group-item">商品搜索</a>
+				  <a href="${ctx}/student/getAddPage.action" class="list-group-item">添加商品</a>
 				</div>
 			</div>
 			<!--左边列表占12份中的10份-->
 			<div class="col-md-10">
 				<ul class="nav nav-tabs">
-				  <li role="presentation" class="active"><a href="/ShiXun09/student?method=findAll">学生管理</a></li>
-				  <li role="presentation"><a href="student_search.jsp">学生搜索</a></li>
-				  <li role="presentation"><a href="/ShiXun09/student?method=getAddPage">添加学生</a></li>
+				  <li role="presentation" class="active"><a href="/ShiXun09/student?method=findAll">商品管理</a></li>
+				  <li role="presentation"><a href="student_search.jsp">商品搜索</a></li>
+				  <li role="presentation"><a href="/ShiXun09/student?method=getAddPage">添加商品</a></li>
 				</ul>
 				
 				<table class="table  table-condensed table-hover">
 					<thead>
 						<tr>
-							<th>id</th>
-							<th>姓名</th>
-							<th>年龄</th>
-							<th>性别</th>
-							<th>地址</th>
-							<th>出生日期</th>
+							<th>商品id</th>
+							<th>分类id</th>
+							<th>名称</th>
+							<!-- <th>商品副标题</th> -->
+							<!-- <th>产品主图</th> -->
+							<!-- <th>图片地址</th> -->
+							<!-- <th>商品详情</th> -->
+							<th>价格</th>
+							<th>库存</th>
+							<th>状态</th>
+							<!-- <th>创建时间</th> -->
+							<th>更新时间</th>
 							<th>删除</th>
 							<th>修改</th>
 						</tr>
 					</thead>
 					<tbody>
-						<c:forEach items="${list}" var="student">
+						<c:forEach items="${list}" var="product">
 							<tr>
-								<td>${student.getId()}</td>
-								<td>${student.getName()}</td>
-								<td>${student.getAge()}</td>
-								<td>${student.getGender()}</td>
-								<td>${student.getAddress()}</td>
-								<td><fmt:formatDate value="${student.birthday}" pattern="yyyy-MM-dd"/></td>
+								<td>${product.id}</td>
+								<td>${product.categoryId}</td>
+								<td>${product.name}</td>
+								<%-- <td>${product.subtitle}</td> --%>
+								<%-- <td>${product.mainImage}</td> --%>
+								<%-- <td>${product.subImages}</td> --%>
+								<%-- <td>${product.detail}</td> --%>
+								<td>${product.price}</td>
+								<td>${product.stock}</td>
+								<td>${product.status}</td>
+								<%-- <td>${product.createTime}</td>
+								<td>${product.updateTime}</td> --%>
+								<%-- <td><fmt:formatDate value="${product.createTime}" pattern="yyyy-MM-dd"/></td> --%>
+								<td><fmt:formatDate value="${product.updateTime}" pattern="yyyy-MM-dd"/></td>
 								
 								<td><a
-									href="${ctx}/student/deletById.action?id=${student.getId()}">删除</a></td>
+									href="${ctx}/student/deletById.action?id=${product.id}">删除</a></td>
 								<td><a
-								href="${ctx}/student/toUpdate.action?id=${student.getId()}">修改</a></td>
+								href="${ctx}/student/toUpdate.action?id=${product.id}">修改</a></td>
 							</tr>
 						</c:forEach>
 					</tbody>
