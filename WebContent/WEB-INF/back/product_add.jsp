@@ -8,7 +8,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <%@include file="../common/head.jsp" %>
-<script type="text/javascript" src="${ctx}/res/thirdlib/jquery/jquery.form.js"></script>
+<script type="text/javascript" src="${ctx}/resources/thirdlib/jquery/jquery.form.js"></script>
 <script type="text/javascript">
 	function uploadPic(){
 		//定义参数
