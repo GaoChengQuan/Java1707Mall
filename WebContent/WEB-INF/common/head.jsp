@@ -4,6 +4,9 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
 <c:set var="ctx" value="${pageContext.request.contextPath}"></c:set>
+<script type="text/javascript">  
+     var ctx="${pageContext.request.contextPath}";  
+</script>
 
 <link rel="stylesheet"
 	href="${ctx}/resources/thirdlib/bootstrap/css/bootstrap.css" />
