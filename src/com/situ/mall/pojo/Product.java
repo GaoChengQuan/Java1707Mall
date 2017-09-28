@@ -3,6 +3,9 @@ package com.situ.mall.pojo;
 import java.math.BigDecimal;
 import java.util.Date;
 
+import com.situ.mall.constant.MallConstant;
+import com.situ.mall.util.QiniuUploadUtil;
+
 public class Product {
 	//商品id
     private Integer id;
@@ -28,6 +31,10 @@ public class Product {
     private Date createTime;
 
     private Date updateTime;
+    
+    public String getFullUrl() {
+		return MallConstant.SERVER_ADDRES + mainImage;
+	}
 
     public Product(Integer id, Integer categoryId, String name, String subtitle, String mainImage, String subImages, String detail, BigDecimal price, Integer stock, Integer status, Date createTime, Date updateTime) {
         this.id = id;

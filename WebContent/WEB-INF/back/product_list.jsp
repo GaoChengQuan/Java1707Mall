@@ -93,7 +93,7 @@
 								<td>${product.categoryId}</td>
 								<td>${product.name}</td>
 								<%-- <td>${product.subtitle}</td> --%>
-								<td><img alt="" src="/pic/${product.mainImage}" width="80" height="60" "></td>
+								<td><img alt="" src="${product.fullUrl}" width="80" height="60" "></td>
 								<%-- <td>${product.subImages}</td> --%>
 								<%-- <td>${product.detail}</td> --%>
 								<td>${product.price}</td>
