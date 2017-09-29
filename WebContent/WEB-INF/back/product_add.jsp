@@ -140,7 +140,7 @@ KindEditor.ready(function(K) {
 			//指定上传文件参数名称
 			filePostName  : "pictureFile",
 			//指定上传文件请求的url。
-			uploadJson : ctx+'/upload/pic.action',
+			uploadJson : '${ctx}/upload/pic.action',
 			//上传类型，分别为image、flash、media、file
 			dir : "image"
 	}
