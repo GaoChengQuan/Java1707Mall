@@ -34,9 +34,10 @@ public class UploadController {
 			//jpg,png
 			String ext = FilenameUtils.getExtension(pictureFile.getOriginalFilename());
 			String fileName = name + "." + ext;
+			String filePath1 = "E:\\pic\\" + fileName;
 			String filePath = MallConstant.SERVER_ADDRES + fileName;
 			try {
-				pictureFile.transferTo(new File(filePath));
+				pictureFile.transferTo(new File(filePath1));
 			} catch (IllegalStateException e) {
 				e.printStackTrace();
 			} catch (IOException e) {
