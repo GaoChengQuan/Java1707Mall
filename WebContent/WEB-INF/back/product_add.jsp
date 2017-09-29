@@ -142,7 +142,8 @@ KindEditor.ready(function(K) {
 			//指定上传文件请求的url。
 			uploadJson : '${ctx}/upload/pic.action',
 			//上传类型，分别为image、flash、media、file
-			dir : "image"
+			dir : "image",
+			afterBlur: function () { this.sync(); }
 	}
 	var editor = K.editor(kingEditorParams);
 	//多图片上传
