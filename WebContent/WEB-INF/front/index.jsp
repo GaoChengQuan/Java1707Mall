@@ -1,12 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+<%@include file="../common/head.jsp" %>
 <!DOCTYPE html>
 <html>
 
 	<head>
 		<meta charset="UTF-8">
 		<title>靓淘网</title>
-		<%@include file="../common/head.jsp" %>
 		<link rel="stylesheet" href="${ctx}/resources/front/css/index_style.css" />
 	</head>
 
@@ -36,7 +36,7 @@
 		<!-----------------------2.logo-------------------->
 		<div class="logo_center">
 			<div class="left">
-				<img class="logo_img" src="img/LOGO.png" />
+				<img class="logo_img" src="${ctx}/resources/front/img/LOGO.png" />
 			</div>
 			<div class="center">
 				<input class="btn1" type="text" value="洗面奶" />

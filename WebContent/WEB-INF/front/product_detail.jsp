@@ -1,10 +1,39 @@
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
+<%@include file="../common/head.jsp" %>
 <!DOCTYPE html>
 <html>
 
 	<head>
 		<meta charset="UTF-8">
 		<title>华为畅享6S</title>
-		<link rel="stylesheet" type="text/css" href="CSS/detail_style.css" />
+		<link rel="stylesheet" type="text/css" href="${ctx}/resources/front/css/detail_style.css" />
+		<script type="text/javascript">
+			$(function(){
+				//- 
+				$("#sub").click(function(){
+					var num = $("#num").val();
+					num--;
+					if(num == 0) {
+						//alert();
+						return;
+					}
+					//赋值
+					$("#num").val(num);
+				});
+				//+
+				$("#add").click(function(){
+					var num = $("#num").val();
+					num++;
+					if(num > '${product.stock}') {
+						alert("此商品只能买" + '${product.stock}' + "件");
+						return;
+					}
+					//赋值
+					$("#num").val(num);
+				});
+			});
+		</script>
 	</head>
 
 	<body>
@@ -45,7 +74,7 @@
 		<!---------------logo-------------------->
 		<div class="logo_center">
 			<div class="left">
-				<img src="img/LOGO.png" />
+				<img src="${ctx}/resources/front/img/LOGO.png" />
 			</div>
 			<div class="center">
 				<input class="logo_search" type="text" />
@@ -114,15 +143,15 @@
 					<li class="little_menu_left">
 						&nbsp;&nbsp;&nbsp;&nbsp;家电数码&nbsp;&gt;&nbsp;&nbsp;手机通讯&nbsp;&gt;&nbsp;&nbsp;手机&nbsp;&gt;&nbsp;&nbsp;<span style="border: 1px solid #808080;">
 						华为（HUAWEI）
-						<img src="img/111.png" />
+						<img src="${ctx}/resources/front/img/111.png" />
 						</span> &nbsp;&nbsp;&gt;&nbsp;华为畅享6S
 					</li>
 					<li class="little_menu_right">
 						华为官方旗舰店
-						<img src="img/tou.png" /> 联系供应商
+						<img src="${ctx}/resources/front/img/tou.png" /> 联系供应商
 					</li>
 					<li class="little_menu_bottom">
-						<img src="img/shoucang2.png" /> 联系供应商
+						<img src="${ctx}/resources/front/img/shoucang2.png" /> 联系供应商
 					</li>
 				</ul>
 			</div>
@@ -131,34 +160,34 @@
 			<div class="left">
 				<ul>
 					<li class="banner_center_left_top">
-						<img src="img/sm1.png" />
+						<img src="${ctx}/resources/front/img/sm1.png" />
 					</li>
 					<li class="banner_center_left_center">
 						<ul>
 							<li class="left_right_nav">
-								<img src="img/left.png" />
+								<img src="${ctx}/resources/front/img/left.png" />
 							</li>
 							<li class="small_shop">
-								<img src="img/112.png" />
+								<img src="${ctx}/resources/front/img/112.png" />
 							</li>
 							<li class="small_shop">
-								<img src="img/113.png" />
+								<img src="${ctx}/resources/front/img/113.png" />
 							</li>
 							<li class="small_shop">
-								<img src="img/116.png" />
+								<img src="${ctx}/resources/front/img/116.png" />
 							</li>
 							<li class="small_shop">
-								<img src="img/126.png" />
+								<img src="${ctx}/resources/front/img/126.png" />
 							</li>
 							<li class="left_right_nav">
-								<img src="img/right.png" />
+								<img src="${ctx}/resources/front/img/right.png" />
 							</li>
 						</ul>
 					</li>
 					<li class="banner_center_left_bottom">
-						<img src="img/xin.png" />&nbsp;关注&nbsp;&nbsp;
-						<img src="img/enjoy.png" />&nbsp;分享&nbsp;&nbsp;
-						<img src="img/duizhao.png" />&nbsp;对比
+						<img src="${ctx}/resources/front/img/xin.png" />&nbsp;关注&nbsp;&nbsp;
+						<img src="${ctx}/resources/front/img/enjoy.png" />&nbsp;分享&nbsp;&nbsp;
+						<img src="${ctx}/resources/front/img/duizhao.png" />&nbsp;对比
 					</li>
 				</ul>
 			</div>
@@ -166,16 +195,16 @@
 				<ul>
 					<li class="right_1">
 						<span class="title">	
-							华为&nbsp;畅享6S&nbsp;金色&nbsp;移动联通电信4G手机&nbsp;双卡双待
+							${product.name}
 						</span><br />
 						<span class="next_title">
-							骁龙芯片！金属机身！享看又享玩！付款后7天内发货
+							${product.subtitle}
 						</span>
 					</li>
 					<li class="right_2">
 						<ul>
 							<li class="right_2_1">
-								<img class="img_117" src="img/117.png" />
+								<img class="img_117" src="${ctx}/resources/front/img/117.png" />
 								<span class="right_2_1_span">
 									&nbsp;&nbsp;&nbsp;全靓淘实物商品通用
 								</span>
@@ -184,14 +213,14 @@
 								<span class="right_2_2_span">
 									去挂券
 								</span>
-								<img src="img/120.png" />
+								<img src="${ctx}/resources/front/img/120.png" />
 							</li>
 							<li class="right_2_3">
 								<span class="right_2_3_span">
 									促&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;销&nbsp;&nbsp;&nbsp;&nbsp;
 								</span>
 								<span>
-									¥ 1499.00&nbsp;&nbsp;
+									¥ ${product.price}&nbsp;&nbsp;
 								</span>
 								<span>
 									<del>¥ 1999</del>
@@ -201,8 +230,8 @@
 								<span class="right_2_4_span">
 									支&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;持&nbsp;&nbsp;&nbsp;&nbsp;
 								</span>
-								<img src="img/119.png" />&nbsp;&nbsp;
-								<img src="img/118.png" />
+								<img src="${ctx}/resources/front/img/119.png" />&nbsp;&nbsp;
+								<img src="${ctx}/resources/front/img/118.png" />
 							</li>
 							<li class="right_2_5">
 								<span class="right_2_5_span">
@@ -216,7 +245,7 @@
 								<span class="right_2_6_span">
 									更多优惠
 								</span>
-								<img src="img/xia.png" />
+								<img src="${ctx}/resources/front/img/xia.png" />
 							</li>
 						</ul>
 					</li>
@@ -224,11 +253,11 @@
 						<span>
 									运&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;费&nbsp;&nbsp;&nbsp;&nbsp;
 									广东	深圳&nbsp;至&nbsp;青岛&nbsp;&nbsp;&nbsp;
-									<img src="img/xia.png"/>&nbsp;
+									<img src="${ctx}/resources/front/img/xia.png"/>&nbsp;
 									市南区&nbsp;
-									<img src="img/xia.png"/>&nbsp;
+									<img src="${ctx}/resources/front/img/xia.png"/>&nbsp;
 									香港中路街道&nbsp;
-									<img src="img/xia.png"/>&nbsp;
+									<img src="${ctx}/resources/front/img/xia.png"/>&nbsp;
 									快递：0.00
 							</span>
 
@@ -274,15 +303,15 @@
 								</span>
 								<span class="right_4_8">
 									屏碎保1年&nbsp;¥66&nbsp;
-									<img src="img/111.png"/>
+									<img src="${ctx}/resources/front/img/111.png"/>
 								</span>
 								<span class="right_4_9">
 									1年内换新&nbsp;¥86&nbsp;
-									<img src="img/111.png"/>
+									<img src="${ctx}/resources/front/img/111.png"/>
 								</span>
 								<span class="right_4_10">
 									屏碎保2年&nbsp;¥96&nbsp;
-									<img src="img/111.png"/>
+									<img src="${ctx}/resources/front/img/111.png"/>
 								</span>
 							</li>
 						</ul>
@@ -291,13 +320,14 @@
 						<span class="right_txt">
 							数&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;量&nbsp;&nbsp;&nbsp;&nbsp;
 						</span>
-						<input class="right_bottom_text" type="text" value="1" />
+						<input class="right_bottom_text" type="text" id="num" value="1" />
 						<ul class="right_bottom_btn">
 							<li>
-								<input class="right_bottom_substract" type="button" value="-" />
-								<input class="right_bottom_add" type="button" value="+" />
+								<input class="right_bottom_substract" type="button" id="sub" value="-" />
+								<input class="right_bottom_add" type="button" id="add" value="+" />
 							</li>
 						</ul>
+						库存： ${product.stock}
 						<input class="right_bottom_addCar" type="button" value="加入购物车" />
 						<span class="right_txt_bottom">
 							温馨提示&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;·支持7天无理由退货
@@ -331,7 +361,7 @@
 					<li>
 						<a href="">
 							更多
-							<img src="img/111.png" />
+							<img src="${ctx}/resources/front/img/111.png" />
 						</a>
 					</li>
 				</ul>
@@ -340,7 +370,7 @@
 				<ul>
 					<li>
 						<div class="title_center_img">
-							<img src="img/130.png" />
+							<img src="${ctx}/resources/front/img/130.png" />
 						</div>
 						<div class="title_center_p">
 							派滋&nbsp;华为畅享6S钢化膜畅享6S手机贴膜&nbsp;高清透明
@@ -348,12 +378,12 @@
 					</li>
 					<li>
 						<div class="add_img">
-							<img src="img/jia.png" />
+							<img src="${ctx}/resources/front/img/jia.png" />
 						</div>
 					</li>
 					<li>
 						<div class="title_center_img">
-							<img src="img/131.png" />
+							<img src="${ctx}/resources/front/img/131.png" />
 						</div>
 						<div class="title_center_p">
 							机灵猫 畅享6S手机壳女防摔带支架保护套
@@ -365,7 +395,7 @@
 					</li>
 					<li>
 						<div class="title_center_img">
-							<img src="img/137.png" />
+							<img src="${ctx}/resources/front/img/137.png" />
 						</div>
 						<div class="title_center_p">
 							机灵猫 畅享6S手机壳女防摔带支架保护套
@@ -377,7 +407,7 @@
 					</li>
 					<li>
 						<div class="title_center_img">
-							<img src="img/132.png" />
+							<img src="${ctx}/resources/front/img/132.png" />
 						</div>
 						<div class="title_center_p">
 							品胜 Type-C/MicroUSB/Lightning接口三个
@@ -389,7 +419,7 @@
 					</li>
 					<li>
 						<div class="title_center_img">
-							<img src="img/133.png" />
+							<img src="${ctx}/resources/front/img/133.png" />
 						</div>
 						<div class="title_center_p">
 							品胜 iPad充电器 移动电源充电
@@ -401,7 +431,7 @@
 					</li>
 					<li>
 						<div class="title_center_img">
-							<img src="img/134.png" />
+							<img src="${ctx}/resources/front/img/134.png" />
 						</div>
 						<div class="title_center_p">
 							罗马式（POMOSS）LED数显屏 移动
@@ -413,12 +443,12 @@
 					</li>
 					<li>
 						<div class="nav_img">
-							<img src="img/135.png" />
+							<img src="${ctx}/resources/front/img/135.png" />
 						</div>
 					</li>
 					<li>
 						<div class="eq_img">
-							<img src="img/136.png" />
+							<img src="${ctx}/resources/front/img/136.png" />
 						</div>
 					</li>
 					<li>
@@ -509,7 +539,7 @@
 								华为（HUAWEI）
 							</span>
 						<span class="care1">
-								<img src="img/xin.png"/>
+								<img src="${ctx}/resources/front/img/xin.png"/>
 								关注
 							</span>
 						</span>
@@ -567,7 +597,7 @@
 					</div>
 					<ul>
 						<li>
-							<img src="img/138.png" />
+							<img src="${ctx}/resources/front/img/138.png" />
 							<p class="small_p">荣耀&nbsp;畅玩6X&nbsp;32GB&nbsp;全网通4G手机&nbsp;高配版&nbsp;铂光金<br />
 								<span class="left_money">
 								¥&nbsp;1299.00
@@ -575,7 +605,7 @@
 							</p>
 						</li>
 						<li>
-							<img src="img/139.png" />
+							<img src="${ctx}/resources/front/img/139.png" />
 							<p class="small_p">华为 4GB 32GB 全网通4G手机 高配版 白色<br />
 								<span class="left_money">
 								¥&nbsp;1299.00
@@ -583,7 +613,7 @@
 							</p>
 						</li>
 						<li>
-							<img src="img/140.png" />
+							<img src="${ctx}/resources/front/img/140.png" />
 							<p class="small_p">华为 HUAWEI noal64GB版本手机 高配版 玫瑰金<br />
 								<span class="left_money">
 								¥&nbsp;1299.00
@@ -591,7 +621,7 @@
 							</p>
 						</li>
 						<li>
-							<img src="img/141.png" />
+							<img src="${ctx}/resources/front/img/141.png" />
 							<p class="small_p">荣耀 麦芒5X 64GB 全网通4G手机 高配版 香槟金<br />
 								<span class="left_money">
 								¥&nbsp;2299.00
@@ -599,7 +629,7 @@
 							</p>
 						</li>
 						<li>
-							<img src="img/142.png" />
+							<img src="${ctx}/resources/front/img/142.png" />
 							<p class="small_p">荣耀 V9 4GB+64GB 全网通4G手机 高配版 极光蓝<br />
 								<span class="left_money">
 								¥&nbsp;1299.00
@@ -607,7 +637,7 @@
 							</p>
 						</li>
 						<li>
-							<img src="img/143.png" />
+							<img src="${ctx}/resources/front/img/143.png" />
 							<p class="small_p">荣耀 畅玩7X 64GB 全网通4G手机 高配版 铂光金<br />
 								<span class="left_money">
 								¥&nbsp;1499.00
@@ -615,7 +645,7 @@
 							</p>
 						</li>
 						<li>
-							<img src="img/144.png" />
+							<img src="${ctx}/resources/front/img/144.png" />
 							<p class="small_p">荣耀 P9 双卡双待 全网通4G手机 高配版 皓月银<br />
 								<span class="left_money">
 								¥&nbsp;1699.00
@@ -623,7 +653,7 @@
 							</p>
 						</li>
 						<li>
-							<img src="img/145.png" />
+							<img src="${ctx}/resources/front/img/145.png" />
 							<p class="small_p">荣耀8 青春版 32GB 全网通4G手机 高配版 铂光金<br />
 								<span class="left_money">
 								¥&nbsp;1399.00
@@ -653,37 +683,37 @@
 				<div class="bottom">
 					<ul>
 						<li class="ranking_1">
-							<img class="brand_ranking" src="img/yuan1.png"/>
+							<img class="brand_ranking" src="${ctx}/resources/front/img/yuan1.png"/>
 							<span class="brand_name">华为荣耀6X</span>
 							<span class="brand_price">¥&nbsp;1699.00</span>
 						</li>
 						<li class="ranking_2">
-							<img class="brand_ranking" src="img/yuan1.png"/>
+							<img class="brand_ranking" src="${ctx}/resources/front/img/yuan1.png"/>
 							<span class="brand_name">360N5</span>
 							<span class="brand_price">¥&nbsp;1699.00</span>
 						</li>
 						<li class="ranking_3">
-							<img class="brand_ranking" src="img/yuan1.png"/>
+							<img class="brand_ranking" src="${ctx}/resources/front/img/yuan1.png"/>
 							<span class="brand_name">OPPOA57</span>
 							<span class="brand_price">¥&nbsp;1699.00</span>
 						</li>
 						<li class="ranking_4">
-							<img class="brand_ranking" src="img/yuan1.png"/>
+							<img class="brand_ranking" src="${ctx}/resources/front/img/yuan1.png"/>
 							<span class="brand_name">小米Note4</span>
 							<span class="brand_price">¥&nbsp;1199.00</span>
 						</li>
 						<li class="ranking_5">
-							<img class="brand_ranking" src="img/yuan1.png"/>
+							<img class="brand_ranking" src="${ctx}/resources/front/img/yuan1.png"/>
 							<span class="brand_name">诺基亚6</span>
 							<span class="brand_price">¥&nbsp;1699.00</span>
 						</li>
 						<li class="ranking_6">
-							<img class="brand_ranking" src="img/yuan1.png"/>
+							<img class="brand_ranking" src="${ctx}/resources/front/img/yuan1.png"/>
 							<span class="brand_name">乐视乐2</span>
 							<span class="brand_price">¥&nbsp;1699.00</span>
 						</li>
 						<li class="ranking_7">
-							<img class="brand_ranking" src="img/yuan1.png"/>
+							<img class="brand_ranking" src="${ctx}/resources/front/img/yuan1.png"/>
 							<span class="brand_name">小米5</span>
 							<span class="brand_price">¥&nbsp;1599.00</span>
 						</li>
@@ -694,7 +724,7 @@
 			<!--=====================-->
 			<div class="right_big">
 				<div class="big_img">
-					<img src="img/tu.png" />
+					${product.detail}
 				</div>
 				<div class="right_big_bottom">
 					<ul class="right_big_bottom_ul">
@@ -855,7 +885,7 @@
 						手机靓淘
 					</li>
 					<li>
-						<img src="img/98.png" />
+						<img src="${ctx}/resources/front/img/98.png" />
 					</li>
 				</ul>
 			</div>

@@ -8,6 +8,8 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <%@include file="../common/head.jsp" %>
+<link rel="stylesheet"
+	href="${ctx}/resources/thirdlib/bootstrap/css/bootstrap.css" />
 <script type="text/javascript">
 	function del(id){
 		var isDel = confirm("您确认要删除么");

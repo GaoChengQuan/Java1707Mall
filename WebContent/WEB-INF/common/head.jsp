@@ -8,7 +8,5 @@
      var ctx="${pageContext.request.contextPath}";  
 </script>
 
-<link rel="stylesheet"
-	href="${ctx}/resources/thirdlib/bootstrap/css/bootstrap.css" />
 
 <script type="text/javascript" src="${ctx}/resources/thirdlib/jquery/jquery-1.11.1.js"></script>

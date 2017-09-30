@@ -28,6 +28,10 @@
   		select <include refid="Base_Column_List"></include> from product
   	</select>
   	
+  	<select id="findById" resultMap="productMap" parameterType="int">
+  		select <include refid="Base_Column_List"></include> from product where id=#{id}
+  	</select>
+  	
   	<insert id="add" parameterType="Product" >
 	    insert into product (id,category_id,name,subtitle,
 	    main_image,sub_images,detail, price,stock,status,create_time,update_time) 
