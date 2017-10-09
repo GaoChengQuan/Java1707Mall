@@ -901,6 +901,7 @@ input {
 	float: right;
 }
 .right_big .big_img{
+	width: 905px;
 	float: right;
 	margin-top: 40px;
 }
