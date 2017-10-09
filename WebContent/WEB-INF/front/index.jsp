@@ -111,30 +111,36 @@
 			<img class="banner"  src="${ctx}/resources/front/img/tu8.png"/>
 			<div class="banner_center">
 				<div class="nav_left">
-					<span>
-						女装
-					</span>
-					<p>
+					<div>
+						<span>
+							女装
+						</span>
 						<a href="">春上新</a>
 						<a href="">套装</a>
 						<a href="">休闲卫衣</a>
-					</p>
-					<span>
-						数码
-					</span>
-					<p>
+						<a href="">休闲卫衣</a>
+						<a href="">休闲卫衣</a>
+						<a href="">休闲卫衣</a>
+					</div>
+					<div>
+						<span>
+							数码
+						</span>
 						<a href="">手机</a>
 						<a href="">笔记本</a>
 						<a href="">平板电脑</a>
-					</p>
-					<span>
-						内衣
-					</span>
-					<p>
+						<a href="">平板电脑</a>
+						<a href="">平板电脑</a>
+					</div>
+					<div>
+						<span>
+							内衣
+						</span>
 						<a href="">热销榜</a>
 						<a href="">内裤</a>
 						<a href="">睡衣套装</a>
-					</p>
+						<a href="">睡衣套装</a>
+					</div>
 					<span>
 						图书
 					</span>
