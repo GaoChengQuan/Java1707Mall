@@ -146,11 +146,12 @@
 			<ul>
 				<c:forEach items="${list}" var="product">
 					<li>
-						<img src="${product.fullUrl}" />
-						<p>${product.name}开发</p>
+						<a href="${ctx}/product/detail.shtml?id=${product.id}"><img src="${product.fullUrl}" /></a>
+						<a href="${ctx}/product/detail.shtml?id=${product.id}"><p>${product.name}开发</p></a>
 					</li>
 				</c:forEach>
 			</ul>
+			<div class="clearfix"></div>
 		</div>
 		
 		<div class="sp">

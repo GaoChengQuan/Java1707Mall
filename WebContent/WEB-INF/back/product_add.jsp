@@ -13,6 +13,7 @@
 <link href="${ctx}/resources/thirdlib/kindeditor/themes/default/default.css" type="text/css" rel="stylesheet">
 <script type="text/javascript" charset="utf-8" src="${ctx}/resources/thirdlib/kindeditor/kindeditor-all-min.js"></script>
 <script type="text/javascript" charset="utf-8" src="${ctx}/resources/thirdlib/kindeditor/lang/zh_CN.js"></script>
+<script type="text/javascript" charset="utf-8" src="${ctx}/resources/thirdlib/jquery/jquery.form.js"></script>
 <script type="text/javascript">
 	function uploadPic(){
 		//定义参数

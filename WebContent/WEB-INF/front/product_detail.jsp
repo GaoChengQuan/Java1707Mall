@@ -160,25 +160,18 @@
 			<div class="left">
 				<ul>
 					<li class="banner_center_left_top">
-						<img src="${ctx}/resources/front/img/sm1.png" />
+						<img src="${product.fullUrl}" width="350" height="350"/>
 					</li>
 					<li class="banner_center_left_center">
 						<ul>
 							<li class="left_right_nav">
 								<img src="${ctx}/resources/front/img/left.png" />
 							</li>
-							<li class="small_shop">
-								<img src="${ctx}/resources/front/img/112.png" />
-							</li>
-							<li class="small_shop">
-								<img src="${ctx}/resources/front/img/113.png" />
-							</li>
-							<li class="small_shop">
-								<img src="${ctx}/resources/front/img/116.png" />
-							</li>
-							<li class="small_shop">
-								<img src="${ctx}/resources/front/img/126.png" />
-							</li>
+							<c:forEach items="${subImages}" var="imge">
+								<li class="small_shop">
+									<img src="${imge}" />
+								</li>
+							</c:forEach>
 							<li class="left_right_nav">
 								<img src="${ctx}/resources/front/img/right.png" />
 							</li>
