@@ -14,4 +14,6 @@ public interface IProductService {
 	boolean add(Product product);
 
 	boolean update(Product product);
+
+	List<Product> findCategoryListById(Integer id);
 }

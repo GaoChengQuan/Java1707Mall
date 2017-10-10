@@ -126,7 +126,7 @@
 						<span>
 							数码
 						</span>
-						<a href="">手机</a>
+						<a href="${ctx}/product/product_list.shtml?id=100012">手机</a>
 						<a href="">笔记本</a>
 						<a href="">平板电脑</a>
 						<a href="">平板电脑</a>

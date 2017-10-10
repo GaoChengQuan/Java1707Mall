@@ -39,5 +39,10 @@ public class ProductServiceImpl implements IProductService{
 	public boolean update(Product product) {
 		return false;
 	}
+
+	@Override
+	public List<Product> findCategoryListById(Integer id) {
+		return productDao.findCategoryListById(id);
+	}
 	
 }

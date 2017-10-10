@@ -38,5 +38,8 @@
 	    values (#{id},#{categoryId},#{name},#{subtitle},#{mainImage},#{subImages},#{detail},#{price},#{stock},#{status},now(),now())
     </insert>
     
+    <select id="findCategoryListById" parameterType="int" resultMap="productMap">
+    	select <include refid="Base_Column_List"></include> from product where category_id=#{id}
+    </select>
   	
   </mapper>

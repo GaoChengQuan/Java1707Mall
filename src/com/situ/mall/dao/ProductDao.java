@@ -14,4 +14,6 @@ public interface ProductDao {
 	int add(Product product);
 
 	int update(Product product);
+
+	List<Product> findCategoryListById(Integer id);
 }
