@@ -110,6 +110,35 @@
 			</div>
 			<div class="clearfix"></div>
 		</div>
+		<div class="menu">
+			<div class="menu_center">
+				<ul class="menu_ul">
+					<li>
+						<a class="all_a" href="">全部商品分类</a>
+					</li>
+					<li>
+						<a href="index.html" target="_blank">商城首页</a>
+					</li>
+					<li>
+						<a href="">手机首页</a>
+					</li>
+					<li>
+						<a href="">新机首发</a>
+					</li>
+					<li>
+						<a href="">手机社区</a>
+					</li>
+					<li>
+						<a href="">企业采购</a>
+					</li>
+					<li>
+						<a href="">精选店铺</a>
+					</li>
+				</ul>
+				<div class="clearfix"></div>
+			</div>
+
+		</div>
 		<!------------------------------------------------------------------>
 		
 		<div class="surper_big">
