@@ -2,6 +2,7 @@ package com.situ.mall.controller.front;
 
 import java.io.IOException;
 import java.io.StringWriter;
+import java.util.List;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -12,6 +13,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.core.JsonGenerationException;
+import com.fasterxml.jackson.core.JsonParseException;
 import com.situ.mall.pojo.Product;
 import com.situ.mall.service.IProductService;
 import com.situ.mall.vo.BuyCartVO;
@@ -31,7 +37,8 @@ public class CartController {
 		
 		//springmvc
 		ObjectMapper objectMapper = new ObjectMapper();
-		objectMapper.setSerializationInclusion(Inclusion.NON_NULL);
+		//只有对象里面不是null的才转换
+		objectMapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
 		
 		BuyCartVO buyCartVO = null;
 		Cookie[] cookies = request.getCookies();
@@ -40,7 +47,13 @@ public class CartController {
 			for (Cookie cookie : cookies) {
 				if ("buy_cart_cookie".equals(cookie.getName())) {
 					//之前已经有购物车
-					
+					//"{\"items\":[{\"product\":{\"id\":45},\"amount\":1}],\"productId\":45}"
+					String value = cookie.getValue();
+					try {
+						buyCartVO = objectMapper.readValue(value, BuyCartVO.class);
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
 				}
 			}
 		}
@@ -51,8 +64,10 @@ public class CartController {
 		
 		//把购物项放到购物车里面
 		if (null != productId) {
+			Product productTemp = productService.findById(productId);
 			Product product = new Product();
 			product.setId(productId);
+			product.setStock(productTemp.getStock());
 			CartItemVO cartItemVO = new CartItemVO();
 			cartItemVO.setProduct(product);
 			cartItemVO.setAmount(amount);
@@ -62,12 +77,8 @@ public class CartController {
 			
 			//把购物车对象BuyCartVO以json形式写到cookie里面
 			StringWriter stringWriter = new StringWriter();
-			try {
+		    try {
 				objectMapper.writeValue(stringWriter, buyCartVO);
-			} catch (JsonGenerationException e) {
-				e.printStackTrace();
-			} catch (JsonMappingException e) {
-				e.printStackTrace();
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
@@ -83,12 +94,13 @@ public class CartController {
 			response.addCookie(cookie);
 		}
 		
-		//3.将购物车放到cookie
 		
-		
-		
-		
-		
+		//放到域对象中返回到前端展示的这个购物车，需要将Product对象填满数据才行
+		List<CartItemVO> items = buyCartVO.getItems();
+		for (CartItemVO item : items) {
+			Product product = productService.findById(item.getProduct().getId());
+			item.setProduct(product);
+		}
 		
 		model.addAttribute("buyCartVO", buyCartVO);
 		return "cart";

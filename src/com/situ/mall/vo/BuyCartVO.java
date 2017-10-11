@@ -5,6 +5,8 @@ import java.util.List;
 
 import org.junit.validator.PublicClassValidator;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 /**
  * 购物车
  *
@@ -24,7 +26,7 @@ public class BuyCartVO {
 				isExist = true;
 				int amount = item.getAmount() + cartItemVO.getAmount();
 				//购买这件商品的总数量应该<=product.stock
-				if (amount <= item.getProduct().getStock()) {
+				if (amount <= cartItemVO.getProduct().getStock()) {
 					item.setAmount(amount);
 				} else {
 					//超出购买限制，最大只能购买这件商品的最大库存
@@ -37,7 +39,15 @@ public class BuyCartVO {
 		if (isExist == false) {
 			items.add(cartItemVO);
 		}
-		
+	}
+	
+	@JsonIgnore
+	public double getTotalPrice() {
+		Double totalPrice = 0.0;
+		for (CartItemVO item : items) {
+			totalPrice += item.getAmount() * item.getProduct().getPrice().doubleValue();
+		}
+		return totalPrice;
 	}
 
 	public List<CartItemVO> getItems() {
