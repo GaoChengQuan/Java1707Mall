@@ -8,6 +8,39 @@
 		<meta charset="UTF-8">
 		<title>靓淘网_购物车</title>
 		<link rel="stylesheet" href="${ctx}/resources/front/css/cart_style.css" />
+		<script type="text/javascript">
+			function addProductAmount(productId,stock){
+				
+				var num = $("#num" + productId).val();
+				if(num == stock){
+					alert("不能买" + stock + "件商品");
+					return ;
+				}
+				//跟后台进行交互
+				//$("#num" + skuId).val(++num);
+				window.location.href = "${ctx}/cart/addCart.shtml?productId=" + productId + "&amount=1" ;
+			}
+	
+			//-
+			function subProductAmount(productId){
+				var num = $("#num" + productId).val();
+				num--;
+				if(num <= 0 ){
+					delCartItem(productId);
+					return;
+				}
+				
+				//跟后台进行交互
+				//$("#num" + skuId).val(++num);
+				window.location.href = "${ctx}/cart/addCart.shtml?productId=" + productId + "&amount=-1" ;
+			}
+			//删除指定购物项
+			function delCartItem(productId){
+				if(confirm("确定要删除？")) {
+					window.location.href = "${ctx}/cart/deleteItem.shtml?productId="+productId;
+				}
+			}
+		</script>
 	</head>
 
 	<body>
@@ -131,9 +164,9 @@
 							</span>
 						</li>
 						<li class="num_select">
-							<input class="car_ul_btn1" type="button" value="-" />
-							<input class="car_ul_text" type="text" placeholder="1" value="${cartItemVO.amount}" />
-							<input class="car_ul_btn2" type="button" value="+" />
+							<input class="car_ul_btn1" type="button" value="-" onclick="subProductAmount(${cartItemVO.product.id})"/>
+							<input class="car_ul_text" type="text" placeholder="1" id="num${cartItemVO.product.id}" value="${cartItemVO.amount}" />
+							<input class="car_ul_btn2" type="button" value="+" onclick="addProductAmount(${cartItemVO.product.id},${cartItemVO.product.stock})"/>
 						</li>
 						<li class="money">
 							<span style="color: #F41443;">
@@ -141,7 +174,7 @@
 							</span>
 						</li>
 						<li class="delete">
-							<img src="${ctx}/resources/front/img/166.png" />
+							<img src="${ctx}/resources/front/img/166.png" onclick="delCartItem(${cartItemVO.product.id})"/>
 						</li>
 					</ul>
 				</div>

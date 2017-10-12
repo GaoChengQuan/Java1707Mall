@@ -1,9 +1,8 @@
 package com.situ.mall.vo;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
-
-import org.junit.validator.PublicClassValidator;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -48,6 +47,16 @@ public class BuyCartVO {
 			totalPrice += item.getAmount() * item.getProduct().getPrice().doubleValue();
 		}
 		return totalPrice;
+	}
+	
+	public void deleteItem(CartItemVO cartItemVO) {
+		Iterator<CartItemVO> iterator = items.iterator();
+		while (iterator.hasNext()) {
+			CartItemVO item = iterator.next();
+			if (item.getProduct().getId() == cartItemVO.getProduct().getId()) {
+				iterator.remove();
+			}
+		}
 	}
 
 	public List<CartItemVO> getItems() {

@@ -13,11 +13,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.fasterxml.jackson.databind.JsonMappingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.core.JsonGenerationException;
-import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.situ.mall.pojo.Product;
 import com.situ.mall.service.IProductService;
 import com.situ.mall.vo.BuyCartVO;
@@ -105,4 +102,59 @@ public class CartController {
 		model.addAttribute("buyCartVO", buyCartVO);
 		return "cart";
 	}
+	
+	
+	// 删除一个购物项
+    @RequestMapping(value = "/deleteItem.shtml")
+    public String deleteItem(Integer productId, HttpServletRequest request, HttpServletResponse response) {
+    	//springmvc
+		ObjectMapper objectMapper = new ObjectMapper();
+		//只有对象里面不是null的才转换
+		objectMapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
+		
+		BuyCartVO buyCartVO = null;
+		Cookie[] cookies = request.getCookies();
+		//1.如果cookie有这个购物车对象，那就从cookie里面取出这个购物车对象
+		if (null != cookies && cookies.length > 0) {
+			for (Cookie cookie : cookies) {
+				if ("buy_cart_cookie".equals(cookie.getName())) {
+					//之前已经有购物车
+					//"{\"items\":[{\"product\":{\"id\":45},\"amount\":1}],\"productId\":45}"
+					String value = cookie.getValue();
+					try {
+						buyCartVO = objectMapper.readValue(value, BuyCartVO.class);
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+				}
+			}
+		}
+       if (null != buyCartVO) {
+           Product product = new Product();
+           product.setId(productId);
+           // 创建购物项
+           CartItemVO cartItemVO = new CartItemVO();
+           cartItemVO.setProduct(product);
+           buyCartVO.deleteItem(cartItemVO);
+          //把购物车对象BuyCartVO以json形式写到cookie里面
+			StringWriter stringWriter = new StringWriter();
+		    try {
+				objectMapper.writeValue(stringWriter, buyCartVO);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			
+			//将购物车json数据放到cookie里面
+			Cookie cookie = new Cookie("buy_cart_cookie", stringWriter.toString());
+			//默认关闭浏览器cookie销毁
+			cookie.setMaxAge(60 * 60 * 24);
+			
+			cookie.setPath("/");
+			
+			//将cookie发送给浏览器
+			response.addCookie(cookie);
+       }
+       return "redirect:/cart/addCart.shtml";
+    }
+
 }
