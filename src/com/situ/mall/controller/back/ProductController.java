@@ -6,7 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.situ.mall.common.ServerResponse;
 import com.situ.mall.pojo.Product;
 import com.situ.mall.service.IProductService;
 
@@ -38,9 +40,15 @@ public class ProductController {
 	}
 	
 	@RequestMapping("/add")
-	public String add(Product product){
-		productService.add(product);
-		return "redirect:/product/findAll.action";
+	@ResponseBody
+	public ServerResponse add(Product product){
+		return productService.add(product);
+	}
+	
+	@RequestMapping("/findAllJson")
+	@ResponseBody
+	public ServerResponse<List<Product>> findAllJson(Model model) {
+		return productService.findAllJson();
 	}
 	
 }

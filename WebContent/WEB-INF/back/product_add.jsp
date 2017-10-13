@@ -29,6 +29,27 @@
 		
 		 $("#form-add").ajaxSubmit(options);
 	}
+	
+	function submitForm() {
+		var options = {
+			url:"${ctx}/product/add.action",
+			type:"post",
+			dataType:"json",
+			data:$("#add-form").serialize(),
+			success:function(data){
+				if(data.status==0) {
+					alert(data.msg);
+				} else {
+					alert(data.msg);
+				}
+			}
+		}
+		$.ajax(options)
+	}
+	
+	function clearForm() {
+		$("#add-form")[0].reset();
+	}
 </script>
 </head>
 <body>
@@ -81,7 +102,7 @@
 				  <li role="presentation" class="active"><a href="/ShiXun09/student?method=getAddPage">添加学生</a></li>
 				</ul>
 				
-				<form id="form-add" action="${ctx}/product/add.action" enctype="multipart/form-data" method="post">
+				<form id="add-form" action="${ctx}/product/add.action" enctype="multipart/form-data" method="post">
 				  <div class="form-group">
 				    <label for="exampleInputEmail1">分类</label>
 				    <input name="categoryId"  class="form-control" id="exampleInputEmail1">
@@ -126,7 +147,8 @@
 				  	<label>商品描述</label>
 				  	 <textarea style="width:900px;height:300px;visibility:hidden;" name="detail"></textarea>
 				  </div>
-				  <button type="submit" class="btn btn-default">Submit</button>
+				  <button type="buuton" class="btn btn-default" onclick="submitForm()">添加商品</button>
+				  <button type="buuton" class="btn btn-default" onclick="clearForm()">清空表单</button>
 				</form>
 				
 			</div>
