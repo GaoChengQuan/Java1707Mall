@@ -48,10 +48,10 @@ public class ProductServiceImpl implements IProductService{
 			if (rowCount > 0) {
 				return ServerResponse.createSuccess("添加商品成功");
 			} else {
-				return ServerResponse.createSuccess("添加商品失败");
+				return ServerResponse.createError("添加商品失败");
 			}
 		} catch (Exception e) {
-			return ServerResponse.createSuccess("添加商品失败");
+			return ServerResponse.createError("添加商品失败");
 		}
 	}
 

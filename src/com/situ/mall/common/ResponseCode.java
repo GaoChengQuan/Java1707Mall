@@ -1,5 +1,7 @@
 package com.situ.mall.common;
-
+/**
+ * status对应的状态 
+ */
 public enum ResponseCode {
 	SUCCESS(0, "SUCCESS"),
 	ERROR(1, "ERROR"),
@@ -20,6 +22,4 @@ public enum ResponseCode {
 	public String getDesc() {
 		return desc;
 	}
-	
-	
 }

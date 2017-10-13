@@ -37,11 +37,25 @@
 			dataType:"json",
 			data:$("#add-form").serialize(),
 			success:function(data){
-				if(data.status==0) {
+				/* if(data.status==0) {
 					alert(data.msg);
 				} else {
 					alert(data.msg);
-				}
+				} */
+				if(data.status==0){
+            		layer.confirm(
+           				'添加成功',
+           				{btn:['关闭','跳转到列表界面']},
+           				function(index){
+           					layer.close(index);
+           				},
+           				function(){
+           					window.location.href = "${ctx}/product/findAll.action";
+           				}
+           			);
+            	} else{
+            		layer.msg("添加失败");
+            	}
 			}
 		}
 		$.ajax(options)
@@ -147,8 +161,8 @@
 				  	<label>商品描述</label>
 				  	 <textarea style="width:900px;height:300px;visibility:hidden;" name="detail"></textarea>
 				  </div>
-				  <button type="buuton" class="btn btn-default" onclick="submitForm()">添加商品</button>
-				  <button type="buuton" class="btn btn-default" onclick="clearForm()">清空表单</button>
+				  <button type="button" class="btn btn-default" onclick="submitForm()">添加商品</button>
+				  <button type="button" class="btn btn-default" onclick="clearForm()">清空表单</button>
 				</form>
 				
 			</div>

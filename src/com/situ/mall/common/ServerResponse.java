@@ -4,7 +4,6 @@ import java.io.Serializable;
 
 /**
  * 后台返回给前端的对象
- * 
  * @param <T>
  */
 public class ServerResponse<T> implements Serializable {
