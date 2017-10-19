@@ -51,4 +51,10 @@ public class ProductController {
 		return productService.findAllJson();
 	}
 	
+	@RequestMapping("/show")
+	@ResponseBody
+	public ServerResponse show(Integer id) {
+		return productService.show(id);
+	}
+	
 }

@@ -21,4 +21,6 @@ public interface IProductService {
 	boolean update(Product product);
 
 	List<Product> findCategoryListById(Integer id);
+
+	ServerResponse show(Integer id);
 }

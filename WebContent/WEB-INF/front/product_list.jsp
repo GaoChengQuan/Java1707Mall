@@ -146,8 +146,10 @@
 			<ul>
 				<c:forEach items="${list}" var="product">
 					<li>
-						<a href="${ctx}/product/detail.shtml?id=${product.id}"><img src="${product.fullUrl}" /></a>
-						<a href="${ctx}/product/detail.shtml?id=${product.id}"><p>${product.name}开发</p></a>
+						<%-- <a href="${ctx}/product/detail.shtml?id=${product.id}"><img src="${product.fullUrl}" /></a> --%>
+						<a href="${ctx}/resources/html/${product.id}.html"><img src="${product.fullUrl}" /></a>
+						<%-- <a href="${ctx}/product/detail.shtml?id=${product.id}"><p>${product.name}</p></a> --%>
+						<a href="${ctx}/resources/html/${product.id}.html"><p>${product.name}</p></a>
 					</li>
 				</c:forEach>
 			</ul>

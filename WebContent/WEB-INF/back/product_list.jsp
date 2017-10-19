@@ -39,6 +39,7 @@
 					<th>更新时间</th>
 					<th>删除</th>
 					<th>修改</th>
+					<th>上架</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -68,6 +69,8 @@
 							href="${ctx}/student/deletById.action?id=${product.id}">删除</a></td>
 						<td><a
 						href="${ctx}/student/toUpdate.action?id=${product.id}">修改</a></td>
+						<td><a
+						href="${ctx}/product/show.action?id=${product.id}">修改</a></td>
 					</tr>
 				</c:forEach>
 			</tbody>
